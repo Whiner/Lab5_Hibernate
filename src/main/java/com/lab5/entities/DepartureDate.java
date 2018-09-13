@@ -18,4 +18,12 @@ public class DepartureDate {
     @JoinColumn(name = "client_id")
     private Client client;
 
+
+    public DepartureDate(Date date, Client client) {
+        this.date = date;
+        this.client = client;
+    }
+
+    public DepartureDate() {
+    }
 }

@@ -22,4 +22,14 @@ public class Payment {
     @JoinColumn(name = "client_id")
     private Client client;
 
+
+    public Payment() {
+    }
+
+    public Payment(Date date, String form, String note, Client client) {
+        this.date = date;
+        this.form = form;
+        this.note = note;
+        this.client = client;
+    }
 }
