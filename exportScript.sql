@@ -1,0 +1,13 @@
+drop table if exists Client;
+drop table if exists DepartureDate;
+drop table if exists hibernate_sequence;
+drop table if exists Payment;
+create table Client (id integer not null, arrivalDate datetime, passportNumber varchar(255), phoneNumber bigint, pib varchar(255), primary key (id)) type=MyISAM;
+create table DepartureDate (id integer not null, date datetime, client_id integer, primary key (id)) type=MyISAM;
+create table hibernate_sequence (next_val bigint) type=MyISAM;
+insert into hibernate_sequence values ( 1 );
+insert into hibernate_sequence values ( 1 );
+insert into hibernate_sequence values ( 1 );
+create table Payment (id integer not null, date datetime, form varchar(255), note varchar(255), client_id integer, primary key (id)) type=MyISAM;
+alter table DepartureDate add constraint FKoswa9rihsebg675aim00culer foreign key (client_id) references Client (id);
+alter table Payment add constraint FKcbxu44ln4jmjcsrorw4dc2jt4 foreign key (client_id) references Client (id);
