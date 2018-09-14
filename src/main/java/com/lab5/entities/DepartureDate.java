@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Entity
 @Data
-public class DepartureDate {
+public class DepartureDate implements EntityInDb {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;

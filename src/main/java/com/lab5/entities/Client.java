@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Entity
 @Data
-public class Client {
+public class Client implements EntityInDb {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;

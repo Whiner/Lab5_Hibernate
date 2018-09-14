@@ -2,6 +2,7 @@ package com.lab5;
 
 import com.lab5.dao.Dao;
 import com.lab5.entities.Client;
+import com.lab5.entities.EntityInDb;
 
 import java.io.IOException;
 import java.util.List;
@@ -17,9 +18,13 @@ public class Main {
 //        client.setPayment(new Payment(new Date(), "Наличка", "Жадный козел", client));
 //        client.setPhoneNumber(Long.valueOf("8252525252"));
 
-        try (Dao<Client, Integer> clientIntegerDao = new Dao<>()) {
-            List all = clientIntegerDao.findAll();
-            System.out.println(all);
+        try (Dao clientIntegerDao = new Dao()) {
+            List<EntityInDb> all = clientIntegerDao.findAll(Client.class);
+            for (EntityInDb entity : all) {
+                if (entity instanceof Client) {
+                    System.out.println(((Client) entity).getPassportNumber());
+                }
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

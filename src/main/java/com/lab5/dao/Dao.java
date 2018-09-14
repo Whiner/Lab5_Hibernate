@@ -1,22 +1,21 @@
 package com.lab5.dao;
 
+import com.lab5.entities.EntityInDb;
 import com.lab5.utils.HibernateSessionFactoryUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.io.IOException;
-import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
-public class Dao<T, Id extends Serializable> implements AutoCloseable {
+public class Dao implements AutoCloseable {
 
-    private Class<T> tClass;
-
-    public T findById(Id id) {
-        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(tClass, id); //создать новый инстанс для дженерика
+    public EntityInDb findById(Integer id, Class<?> tClass) throws IllegalAccessException, InstantiationException {
+        return (EntityInDb) HibernateSessionFactoryUtil.getSessionFactory().openSession().get(tClass.newInstance().getClass(), id); //создать новый инстанс для дженерика
     }
 
-    public void save(T t) {
+    public void save(EntityInDb t) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
         session.save(t);
@@ -24,7 +23,7 @@ public class Dao<T, Id extends Serializable> implements AutoCloseable {
         session.close();
     }
 
-    public void update(T t) {
+    public void update(EntityInDb t) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
         session.update(t);
@@ -32,7 +31,7 @@ public class Dao<T, Id extends Serializable> implements AutoCloseable {
         session.close();
     }
 
-    public void delete(T t) {
+    public void delete(EntityInDb t) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
         session.delete(t);
@@ -40,8 +39,16 @@ public class Dao<T, Id extends Serializable> implements AutoCloseable {
         session.close();
     }
 
-    public List findAll() {
-        return HibernateSessionFactoryUtil.getSessionFactory().openSession().createQuery("From " + tClass).list();
+    public List<EntityInDb> findAll(Class<? extends EntityInDb> tClass) {
+        List list = HibernateSessionFactoryUtil.getSessionFactory().openSession().createQuery("From " + tClass.getSimpleName()).list();
+        List<EntityInDb> entities = new ArrayList<>();
+        for (Object obj : list) {
+            if (obj instanceof EntityInDb) {
+                entities.add((EntityInDb) obj);
+            }
+        }
+        return entities;
+
     }
 
     @Override
