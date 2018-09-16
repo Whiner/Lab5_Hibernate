@@ -1,4 +1,4 @@
-package com.lab5.entities;
+package com.lab5.db.entities;
 
 import lombok.Data;
 

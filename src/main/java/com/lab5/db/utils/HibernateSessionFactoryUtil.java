@@ -1,8 +1,8 @@
-package com.lab5.utils;
+package com.lab5.db.utils;
 
-import com.lab5.entities.Client;
-import com.lab5.entities.DepartureDate;
-import com.lab5.entities.Payment;
+import com.lab5.db.entities.Client;
+import com.lab5.db.entities.DepartureDate;
+import com.lab5.db.entities.Payment;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;

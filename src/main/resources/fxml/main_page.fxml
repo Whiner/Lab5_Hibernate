@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="900.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lab5.ui.Controller">
+    <children>
+        <TableView fx:id="table" layoutX="47.0" layoutY="47.0" prefHeight="796.0" prefWidth="1125.0">
+            <columns>
+                <TableColumn minWidth="300.0" prefWidth="75.0" resizable="false" text="Full name" />
+                <TableColumn minWidth="150.0" prefWidth="75.0" resizable="false" text="Phone" />
+                <TableColumn minWidth="100.0" prefWidth="75.0" resizable="false" text="Passport" />
+                <TableColumn minWidth="100.0" prefWidth="75.0" resizable="false" text="ArrDate" />
+                <TableColumn minWidth="100.0" prefWidth="75.0" resizable="false" text="DepDate" />
+                <TableColumn minWidth="100.0" prefWidth="75.0" resizable="false" text="PayDate" />
+                <TableColumn minWidth="100.0" prefWidth="75.0" resizable="false" text="Form" />
+                <TableColumn minWidth="180.0" prefWidth="75.0" resizable="false" text="Note" />
+            </columns>
+        </TableView>
+        <Button fx:id="addButton" layoutX="1216.0" layoutY="51.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="245.0" text="Добавить" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="51.0">
+            <font>
+                <Font size="17.0" />
+            </font>
+        </Button>
+        <Button fx:id="delButton" layoutX="1216.0" layoutY="116.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="245.0" text="Удалить" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="116.0">
+            <font>
+                <Font size="17.0" />
+            </font>
+        </Button>
+    </children>
+</AnchorPane>

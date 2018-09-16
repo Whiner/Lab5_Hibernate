@@ -25,9 +25,9 @@
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">true</property>
 
-        <mapping class="com.lab5.entities.Client" />
-        <mapping class="com.lab5.entities.DepartureDate" />
-        <mapping class="com.lab5.entities.Payment" />
+        <mapping class="com.lab5.db.entities.Client"/>
+        <mapping class="com.lab5.db.entities.DepartureDate"/>
+        <mapping class="com.lab5.db.entities.Payment"/>
 
     </session-factory>
 </hibernate-configuration>

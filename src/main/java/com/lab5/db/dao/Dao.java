@@ -1,18 +1,17 @@
-package com.lab5.dao;
+package com.lab5.db.dao;
 
-import com.lab5.entities.EntityInDb;
-import com.lab5.utils.HibernateSessionFactoryUtil;
+import com.lab5.db.entities.EntityInDb;
+import com.lab5.db.utils.HibernateSessionFactoryUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Dao implements AutoCloseable {
 
     public EntityInDb findById(Integer id, Class<?> tClass) throws IllegalAccessException, InstantiationException {
-        return (EntityInDb) HibernateSessionFactoryUtil.getSessionFactory().openSession().get(tClass.newInstance().getClass(), id); //создать новый инстанс для дженерика
+        return (EntityInDb) HibernateSessionFactoryUtil.getSessionFactory().openSession().get(tClass.newInstance().getClass(), id);
     }
 
     public void save(EntityInDb t) {
@@ -52,7 +51,7 @@ public class Dao implements AutoCloseable {
     }
 
     @Override
-    public void close() throws IOException {
+    public void close() {
         HibernateSessionFactoryUtil.getSessionFactory().close();
 
     }

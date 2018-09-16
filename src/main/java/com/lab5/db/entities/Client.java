@@ -1,4 +1,4 @@
-package com.lab5.entities;
+package com.lab5.db.entities;
 
 import lombok.Data;
 
@@ -12,7 +12,7 @@ public class Client implements EntityInDb {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    private String pib;
+    private String fio;
 
     private String passportNumber;
 
