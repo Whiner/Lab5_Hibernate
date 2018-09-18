@@ -8,7 +8,7 @@ import org.hibernate.Transaction;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Dao implements AutoCloseable {
+public class Dao {
 
     public EntityInDb findById(Integer id, Class<?> tClass) throws IllegalAccessException, InstantiationException {
         return (EntityInDb) HibernateSessionFactoryUtil.getSessionFactory().openSession().get(tClass.newInstance().getClass(), id);
@@ -50,10 +50,18 @@ public class Dao implements AutoCloseable {
 
     }
 
-    @Override
+    private Dao() {
+    }
+
+    private static Dao instance = new Dao();
+
+    public static Dao getInstance() {
+        return instance;
+    }
+
+
     public void close() {
         HibernateSessionFactoryUtil.getSessionFactory().close();
-
     }
 }
 

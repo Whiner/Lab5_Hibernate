@@ -7,6 +7,7 @@ import java.util.Date;
 
 @Data
 public class TableClient {
+
     private String fio;
     private String passportNumber;
     private Long phoneNumber;
@@ -16,7 +17,10 @@ public class TableClient {
     private String form;
     private String note;
 
+    private Client client;
+
     public TableClient(Client client) {
+        this.client = client;
         fio = client.getFio();
         passportNumber = client.getPassportNumber();
         phoneNumber = client.getPhoneNumber();
